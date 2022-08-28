@@ -1,0 +1,15 @@
+
+html, body, #root, .AppContainer {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.AppContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
