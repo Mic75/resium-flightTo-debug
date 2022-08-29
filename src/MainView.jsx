@@ -4,16 +4,11 @@ import { useEffect, useRef, useState } from 'react'
 
 export default function MainView ({ POIS }) {
 
-  const [entities, setEntities] = useState([])
   const viewerRef = useRef(null)
 
   useEffect(() => {
-    initEntity()
-  }, [POIS])
-
-  useEffect(() => {
     flyToFirstEntity()
-  }, [entities])
+  }, [POIS])
 
   function flyToFirstEntity () {
     if (viewerRef.current !== null) {
@@ -21,17 +16,6 @@ export default function MainView ({ POIS }) {
       if (cesiumViewer.entities.values.length > 0)
         cesiumViewer.flyTo(cesiumViewer.entities.values[0])
     }
-  }
-
-  function initEntity () {
-    const newEntities = POIS.map((poi) => {
-      // oddly, if whe change the value for the key prop by the index param of the map callback, the flyTo call is
-      // working well (the DataSource does not seem to be out of sync in the Viewer)
-      return <Entity key={poi.id} position={Cartesian3.fromDegrees(poi.lon, poi.lat)}>
-        <PointGraphics color={Color.AQUA} pixelSize={20}/>
-      </Entity>
-    })
-    setEntities(newEntities)
   }
 
   return <div style={{ width: '600px', height: '600px' }}>
@@ -49,7 +33,13 @@ export default function MainView ({ POIS }) {
       fullscreenButton={false}
       style={{ height: '100%' }}
     >
-      {entities}
+      {POIS.map((poi) => {
+        // oddly, if whe change the value for the key prop by the index param of the map callback, the flyTo call is
+        // working well (the DataSource does not seem to be out of sync in the Viewer)
+        return <Entity key={poi.id} position={Cartesian3.fromDegrees(poi.lon, poi.lat)}>
+          <PointGraphics color={Color.AQUA} pixelSize={20}/>
+        </Entity>
+      })}
     </Viewer>
   </div>
 }
