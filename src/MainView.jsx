@@ -33,7 +33,7 @@ export default function MainView ({ POIS }) {
       fullscreenButton={false}
       style={{ height: '100%' }}
     >
-      {POIS.map((poi) => {
+      {POIS.map((poi, i) => {
         // oddly, if whe change the value for the key prop by the index param of the map callback, the flyTo call is
         // working well (the DataSource does not seem to be out of sync in the Viewer)
         return <Entity key={poi.id} position={Cartesian3.fromDegrees(poi.lon, poi.lat)}>

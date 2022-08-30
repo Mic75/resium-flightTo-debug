@@ -9,7 +9,20 @@ body {
 
 .AppContainer {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ViewContainer {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.explanations p{
+    font-family: sans-serif;
+    margin-left: 50px;
+
 }
