@@ -15,9 +15,8 @@ function App () {
       <div className="ViewContainer">
         <button style={{marginBottom: '12px'}} onClick={() => setPOIS_index((POIS_index + 1) % 2)}>Update POI</button>
         <MainView POIS={POIS[POIS_index]}/></div>
-      <div className="explanations"><p>This small example is to illustrate what seems to be a bug happening when
-        resium's Viewer children Entities get
-        updated</p>
+      <div className="explanations"><p>This small highlights what seems to be a bug happening when
+        resium's Viewer children Entities get  updated</p>
         <p>Clicking <em>Update POI</em> button updates the list of Entity components passed to Resium Viewer component.
         </p>
         <p>
